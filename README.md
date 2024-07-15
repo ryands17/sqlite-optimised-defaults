@@ -4,6 +4,8 @@ Tuning SQLite to get the best performance. Also based on [this blog](https://fra
 
 This adds some pragmas that optimise querying and also add specific options to tables like `strict` and `without rowid` to ensure type safety and increase performance.
 
+The pragmas are added in [db/schema.ts](./src/db/schema.ts) and the table options are defined in migrations.
+
 ## Prerequisites
 
 - Node LTS v18 or above
