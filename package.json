@@ -1,0 +1,33 @@
+{
+  "name": "sqlite-optimised-defaults",
+  "version": "1.0.0",
+  "description": "Tuning SQLite to get the best performance. Also based on [this blog](https://fractaledmind.github.io/2023/09/07/enhancing-rails-sqlite-fine-tuning/). The current setup uses Node and Drizzle as the ORM for queries and migrations.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx --watch index.ts",
+    "db:push": "drizzle-kit push",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:seed": "tsx src/db/seed.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.11",
+    "@types/node": "^20.14.10",
+    "drizzle-kit": "^0.23.0",
+    "prettier": "^3.3.3",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.3"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.1.2",
+    "drizzle-orm": "^0.32.0",
+    "ulid": "^2.3.0"
+  },
+  "prettier": {
+    "singleQuote": true
+  }
+}
