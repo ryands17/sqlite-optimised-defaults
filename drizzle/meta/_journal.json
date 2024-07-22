@@ -8,6 +8,13 @@
       "when": 1721055199758,
       "tag": "0000_easy_lucky_pierre",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1721677862279,
+      "tag": "0001_past_living_lightning",
+      "breakpoints": true
     }
   ]
 }

@@ -4,18 +4,30 @@ import { sql, relations } from 'drizzle-orm';
 import { text, sqliteTable, customType } from 'drizzle-orm/sqlite-core';
 import { ulid } from 'ulid';
 
-const customAny = customType<{ data: any; notNull: true; default: true }>({
+const any = customType<{ data: any; notNull: true; default: true }>({
   dataType() {
     return 'any';
   },
 });
 
+const boolean = customType<{ data: boolean; notNull: true; default: true }>({
+  dataType() {
+    return 'bool';
+  },
+});
+
 export const kvStore = sqliteTable('kv', {
   key: text('key').primaryKey(),
-  value: customAny('value').notNull(),
+  value: any('value').notNull(),
   createdAt: text('created_at')
     .notNull()
     .default(sql`(CURRENT_TIMESTAMP)`),
+});
+
+export const featureFlags = sqliteTable('feature_flags', {
+  name: text('name').primaryKey(),
+  description: text('description'),
+  enabled: boolean('enabled').default(false),
 });
 
 export const user = sqliteTable('users', {
@@ -58,5 +70,12 @@ sqlite.pragma('temp_store = memory');
 sqlite.pragma('busy_timeout = 5000');
 
 export const db = drizzle(sqlite, {
-  schema: { user, message, usersMessages, messageAuthor, kvStore },
+  schema: {
+    user,
+    message,
+    usersMessages,
+    messageAuthor,
+    kvStore,
+    featureFlags,
+  },
 });
